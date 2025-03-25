@@ -13,6 +13,7 @@ const ManageInvestorProposals = () => {
 
     const fetchInvestorProposals = async () => {
       try {
+        
         // Fetch all interests by the logged-in investor
         const interestQuery = query(collection(db, "investorInterests"), where("investorId", "==", user.uid));
         const interestDocs = await getDocs(interestQuery);

@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 via-orange-50 to-white-50">
       <div className="bg-white p-8 shadow-lg rounded-lg flex w-[800px]">
       <div className="w-1/2 flex items-center justify-center">
           <img src="/login.svg" alt="Login Illustration" className="w-[90%]" />
