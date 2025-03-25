@@ -33,10 +33,17 @@ const Navbar = () => {
               <Link to="/dashboard" className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-gray-200 font-medium">
                 Dashboard
               </Link>
+
               {role && role === "Investor" && (
                 <Link to="/proposals" className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-gray-200 font-medium">
                   View Proposals
                 </Link>
+              )}
+
+              {role && role === "Investor" && (
+                <Link to="/manage-investment" className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-gray-200 font-medium">
+                    Manage Investments
+              </Link>
               )}
               {user && role === "BusinessPerson" && (
                 <Link to="/interested-investors" className="bg-white text-blue-500 px-4 py-2 rounded-md hover:bg-gray-300 font-medium">

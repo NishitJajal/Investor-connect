@@ -12,26 +12,37 @@ const InterestedInvestors = () => {
 
     const fetchInvestors = async () => {
       try {
+        // Fetch all proposals created by the logged-in business owner
         const proposalsQuery = query(collection(db, "businessProposals"), where("createdBy", "==", user.uid));
         const proposalDocs = await getDocs(proposalsQuery);
-        const proposalIds = proposalDocs.docs.map((doc) => doc.id);
 
+        const proposalMap = proposalDocs.docs.reduce((acc, proposalDoc) => {
+          acc[proposalDoc.id] = proposalDoc.data().title; // Map proposalId to business title
+          return acc;
+        }, {});
+
+        const proposalIds = Object.keys(proposalMap);
         if (proposalIds.length === 0) {
-          setInvestors([])
+          setInvestors([]);
           return;
         }
 
+        // Fetch all interested investors related to these proposals
         const investorQuery = query(collection(db, "investorInterests"), where("proposalId", "in", proposalIds));
         const investorDocs = await getDocs(investorQuery);
 
         const investorData = await Promise.all(
           investorDocs.docs.map(async (investorDoc) => {
             const investorInfo = investorDoc.data();
+
+            // Fetch investor details from "users" collection
             const investorUserDoc = await getDoc(doc(db, "users", investorInfo.investorId));
+
             return {
               ...investorInfo,
               investorName: investorUserDoc.exists() ? investorUserDoc.data().name : "Unknown Investor",
               investorEmail: investorUserDoc.exists() ? investorUserDoc.data().email : "No email available",
+              businessTitle: proposalMap[investorInfo.proposalId] || "Unknown Proposal",
             };
           })
         );
@@ -55,6 +66,7 @@ const InterestedInvestors = () => {
             <h3 className="text-lg font-bold">{investor.investorName}</h3>
             <p className="text-gray-700">Email: {investor.investorEmail}</p>
             <p className="text-gray-600">Investment Amount: ${investor.investmentAmount}</p>
+            <p className="text-indigo-600">Business Title: {investor.businessTitle}</p>
           </div>
         ))
       ) : (

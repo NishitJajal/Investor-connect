@@ -5,10 +5,7 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div className="bg-gray-100 min-h-screen">
-      {/* Navbar */}
-      {/* <Navbar /> */}
-
-      {/* Hero Section */}
+      
       <header className="container mx-auto flex flex-col md:flex-row items-center px-6 py-8">
         <div className="md:w-1/2">
           <h2 className="text-4xl font-bold">Invest in the Future of Business</h2>
@@ -29,7 +26,6 @@ const LandingPage = () => {
         </div>
       </header>
 
-      {/* Investment Categories */}
       <section className="container mx-auto mt-12 px-6">
         <h3 className="text-2xl font-bold text-center">Invest in What You Believe In</h3>
         <p className="text-center text-gray-600 mt-2">
@@ -51,7 +47,6 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
       <footer className="bg-white shadow-md mt-12 py-6">
         <div className="container mx-auto text-center text-gray-600">
           <p>&copy; 2025 Investor Connect. All rights reserved.</p>

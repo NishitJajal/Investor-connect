@@ -9,6 +9,7 @@ import Proposals from "./Pages/Proposals";
 import InterestedInvestors from "./Pages/InterestedInvestor";
 import MyProposals from "./Pages/MyProposals";
 import LandingPage from "./Pages/LandingPage";
+import ManageInvestorProposals from "./Pages/ManageInvestorProposals";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/manage-investment" element={<PrivateRoute><ManageInvestorProposals /></PrivateRoute>} />
         <Route path="/proposals" element={<PrivateRoute><Proposals /></PrivateRoute>}/>
         <Route path="/interested-investors" element={<PrivateRoute><InterestedInvestors /></PrivateRoute>}/>
         <Route path="/my-proposals" element={<PrivateRoute><MyProposals /></PrivateRoute>} />
