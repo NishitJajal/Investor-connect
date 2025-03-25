@@ -5,7 +5,7 @@ const LandingPage = () => {
 
     <div className="min-h-screen bg-gradient-to-r from-blue-50 via-orange-50 to-white-50 font-sans">
 
-      <header className="container mx-auto flex flex-col md:flex-row items-center px-6 py-12">
+      <header className="container flex flex-col md:flex-row items-center mx-14 px-12 py-12">
         <div className="md:w-1/2 text-center md:text-left">
           <h2 className="text-5xl font-bold leading-tight text-gray-800"> 
             Invest in the Future of <span className="text-blue-600">Business</span>
